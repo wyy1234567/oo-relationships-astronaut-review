@@ -15,9 +15,21 @@ class Shuttle
 
     def add_astronaut(astronaut, launch_date)
         Mission.new(astronaut, self, launch_date)
+        #to do: current_astronaut
+        
     end
 
-    #to do: current_astronaut
+    def self.find_by_model(model)
+        Shuttle.all.find do |shuttle|
+            shuttle.model == model
+        end
+        #returns shuttle instance
+
+    end
+
+    
+
+    
 
 
     
