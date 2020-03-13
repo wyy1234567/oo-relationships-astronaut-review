@@ -22,7 +22,8 @@ class Astronaut
 
   end
 
-  def astronaut_missions
+  # list of missions for given astro
+  def missions
     Mission.all.map do |mission|
         mission.astronaut == self
     end
@@ -34,9 +35,18 @@ class Astronaut
   end   
 
   def self.most_missions
-    missions.max_by do |mission|
-        mission.astronaut == self
+    # TODO: returns astro w/ most missions
+
+    most_missions = 0
+    astronaut_with_most_missions = nil
+
+    Astronaut.all.each do |astronaut|
+      if astronaut.missions.count > most_missions
+        astronaut_with_most_missions = astronaut
+        most_missions = astronaut.missions.count
+      end
     end
+    return astronaut_with_most_missions
   end
   
 

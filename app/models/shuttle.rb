@@ -13,9 +13,20 @@ class Shuttle
         @@all 
     end
 
+    def current_astronauts
+       Mission.all.select do |mission|
+          mission.shuttle == self
+       end.map do |mission|
+           mission.astronaut
+       end #TODO:
+    end
+
     def add_astronaut(astronaut, launch_date)
+        if self.current_astronauts.count > @capacity 
+            return "This shuttle is at capacity"
+        end
         Mission.new(astronaut, self, launch_date)
-        #to do: current_astronaut
+        #TODO: 
         
     end
 
