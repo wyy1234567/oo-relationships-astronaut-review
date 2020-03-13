@@ -30,7 +30,10 @@ class Astronaut
   end
 
   def join_shuttle(shuttle, launch_date)
-    Mission.new(self, shuttle, launch_date)
+    shuttle.add_astronaut(self, launch_date)
+    
+
+    # Mission.new(self, shuttle, launch_date)
     #TODO add logic for capacity
   end   
 
